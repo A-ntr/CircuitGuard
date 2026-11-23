@@ -6,7 +6,7 @@ readme = "README.md"
 authors = [
     { name = "An Tran", email = "antuantran233@gmail.com" }
 ]
-requires-python = ">=3.10"
+requires-python = ">=3.12"
 # Runtime dependencies for the backend app. The exact pinned versions used in
 # development live in backend/requirements.txt; install with:
 #   pip install -r backend/requirements.txt

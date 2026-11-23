@@ -9,23 +9,33 @@ The app has two separate jobs:
 
 ## Run locally
 
-Use Python 3.13 or newer and Node.js. From the repository root, open two terminals.
+Use Python 3.12 or newer and Node.js. From the repository root, open two terminals.
 
-Terminal 1, start FastAPI:
+Terminal 1, start FastAPI. Install the backend dependencies, then run uvicorn:
+
+```powershell
+pip install -r backend/requirements.txt
+python -m uvicorn app.main:app --app-dir backend --reload
+```
+
+Prefer a virtual environment so dependencies stay isolated (for example
+`python -m venv .venv` then activate it before `pip install`). If you use
+[uv](https://docs.astral.sh/uv/), the equivalent is:
 
 ```powershell
 uv sync --dev
 uv run uvicorn app.main:app --app-dir backend --reload
 ```
 
-Terminal 2, start the frontend:
+Terminal 2, start the frontend (from the `frontend/` folder):
 
 ```powershell
+cd frontend
 npm install
 npm run dev
 ```
 
-Open the local address printed by Vite, normally `http://localhost:5173`. The frontend calls `http://127.0.0.1:8000` by default. Set `VITE_API_BASE_URL` if your backend uses another address.
+Open the local address printed by Vite, normally `http://localhost:5173`. The frontend calls `http://127.0.0.1:8000` by default. To point it at a different backend, set `VITE_API_URL` in `frontend/.env.local` (copy `frontend/.env.example` to start).
 
 ## Configure services
 
